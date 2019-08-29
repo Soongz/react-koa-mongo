@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from "antd";
+import { Button, Card } from "antd";
 
 class User extends React.Component {
 
@@ -11,9 +11,19 @@ class User extends React.Component {
     }
 
     render() {
+
         return (
             <div>
-                <Button type="primary" onClick={show} >Example button</Button>
+                <Button type="primary" onClick={show.bind(this)} >Example button</Button>
+                
+                {this.state.users.map((user) => {
+                    return (
+                        <Card title="${user,loginname}">
+                            <p>${user.email}</p>
+                        </Card>
+                    )
+                })}
+
             </div>
         );
     }
@@ -25,14 +35,27 @@ function show(){
             method: 'GET'
         }).then(res => res.json()).then(
         data => {
-            console.log(data);
+            console.log(data.data.users);
             this.setState({
-                users: data
+                users: data.data.users
             });
     }  
     )
 }
 
+function userCarts(){
+    const usersElements = [];
+    console.log("..");
+    for (let user of this.state.users) {
+        console.log("..");
+        usersElements.push(
+            <Card title="${}">
+                <p>${user.email}</p>
+            </Card>
+        )
+    }
+    return usersElements;
+}
 
 User.defaultProps = {
 };
