@@ -42,7 +42,7 @@ class ViewContent extends React.Component {
                     },
                     pageSize: 4,
                 }}
-                dataSource={listData}
+                dataSource={listData.reverse()}
                 footer={
                     <div>
                         <p align="center">we must at least have a bottom line.</p>
