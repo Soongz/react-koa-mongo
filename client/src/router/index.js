@@ -4,18 +4,21 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect,
 } from 'react-router-dom';
 
 
-import Home from './../containers/Home/home';
-import User from './../containers/Home/user';
+import Home from '../containers/home/home';
+import User from '../containers/home/user';
+import Login from '../containers/home/login';
+import ViewContent from "../containers/subject/viewcontent";
 const AppRouter = () => (
   <Router>
     <div>
       <Switch>
         <Route path="/" exact component={Home}/>
-        <Route path="/user" exact component={User}/>
+        <e pat path="/user" exact component={User}/>
+        <Route path="/login" exact component={Login}/>
+        <Route path="/content" exact component={ViewContent}/>
       </Switch>
     </div>
   </Router>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@version/react-router-v3": "^1.0.0",
     "antd": "^3.22.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

@@ -1,4 +1,5 @@
 const User = require('./../models/user');
+const jwt = require('jsonwebtoken');
 
 const userCtrl = {
 
@@ -29,8 +30,54 @@ const userCtrl = {
               users
             }
         }
+    },
+
+    async login(ctx) {
+        const { loginname, password } = ctx.request.body;
+        try {
+            const findResult = await findOne({ loginname });
+            if(findResult.length) {
+                if(findResult[0].password === password) {
+                    ctx.status = 200;
+                    var token = jwt.sign({ id: findResult[0].id }, 'app.get(user)', {
+                        expiresIn: '8h'
+                    });
+                    ctx.body = {
+                        message: 'success',
+                        token: token,
+                        succ: true,
+                    };
+                } else {
+                    ctx.status = 400;
+                    ctx.body = {
+                        message: 'password error',
+                        succ: false,
+                        errCode: 102,
+                    };
+                }
+            } else {
+                ctx.status = 400;
+                ctx.body = {
+                    message: 'user not exist',
+                    succ: false,
+                    errCode: 103,
+                };
+            }
+        } catch (e) {
+            ctx.status = 500;
+            ctx.body = e.message;
+        }
     }
-}
+};
+
+const findOne = (query, filter={}) => {
+    return new Promise((resolve,reject) => {
+        User.find(query, filter, function(err, user) {
+            if (err) reject(err);
+            resolve(user);
+        });
+    });
+};
 
 const createOne = (body) => {
     return new Promise((resolve, reject) => {
