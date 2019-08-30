@@ -9,6 +9,7 @@ const routers = router
   .post('/user/createUser', userController.createUser)
   .get('/user/findRepo', userController.findRepo)
   .get('/subject/findAllSubjectItem', subjectController.findAllSubjectItem)
+  .post('/subject/publishTopic', subjectController.publishTopic)
   .post('/user/login', userController.login);
 
 module.exports = routers;

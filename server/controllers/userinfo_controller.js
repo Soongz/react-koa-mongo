@@ -87,7 +87,7 @@ const createOne = (body) => {
             resolve(info);
         });
     });
-}
+};
 
 
 module.exports = userCtrl;

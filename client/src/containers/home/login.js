@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Icon, Row, Col} from "antd";
+import { Input, Button, Icon, Row, Col, message} from "antd";
 
 class Login extends React.Component {
 
@@ -52,7 +52,10 @@ function doLogin (){
     }).then(res => res.json()).then( data => {
         if (data.succ === true) {
             const path = `/content`;
+            message.info('login success');
             this.props.history.push(path);
+        } else {
+            message.error('login failed');
         }
     }).catch((err) => {
         console.log(err);

@@ -10,7 +10,8 @@ import {
 import Home from '../containers/home/home';
 import User from '../containers/home/user';
 import Login from '../containers/home/login';
-import ViewContent from "../containers/subject/viewcontent";
+import ViewContent from "../containers/subject/contentFrame";
+import AddTopic from "../containers/subject/addTopic";
 const AppRouter = () => (
   <Router>
     <div>
@@ -19,6 +20,7 @@ const AppRouter = () => (
         <e pat path="/user" exact component={User}/>
         <Route path="/login" exact component={Login}/>
         <Route path="/content" exact component={ViewContent}/>
+        <Route path="/content/addTopic" exact component={AddTopic}/>
       </Switch>
     </div>
   </Router>

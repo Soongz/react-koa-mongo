@@ -26,11 +26,11 @@ class ViewContent extends React.Component {
     render() {
         const listData = this.state.listItems;
 
-            const IconText = ({ type, text }) => (
-                <span>
-                    <Icon type={type} style={{ marginRight: 8 }} />
-                    {text}
-                </span>
+        const IconText = ({ type, text }) => (
+            <span>
+                <Icon type={type} style={{ marginRight: 8 }}/>
+                {text}
+            </span>
         );
         return (
             <List
@@ -68,7 +68,6 @@ class ViewContent extends React.Component {
             />
         )
     }
-
 }
 
 export default ViewContent;
