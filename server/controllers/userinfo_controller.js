@@ -14,7 +14,7 @@ const userCtrl = {
 
         ctx.status = 200;
         ctx.body = {
-            msg: 'create success',
+            succ: true,
             data: ctx.request.body
 
         }

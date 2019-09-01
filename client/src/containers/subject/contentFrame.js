@@ -16,6 +16,9 @@ class ContentFrame extends React.Component {
             case 'createTopic':
                 this.props.history.push(`/content/addTopic`);
                 break;
+            case 'createUser':
+                this.props.history.push(`/content/createUser`);
+                break;
         }
     };
 
@@ -23,7 +26,6 @@ class ContentFrame extends React.Component {
         return (
             <div>
                 <Layout className="nav-bar">
-
                     <Header className="mobile">
                         <div className="logo" />
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="horizontal" onSelect={this.selectTab} className="menu">
@@ -31,6 +33,10 @@ class ContentFrame extends React.Component {
                             <Menu.Item key="createTopic">
                                 <Icon type="plus-circle-o" />
                                 <span>New Topic</span>
+                            </Menu.Item>
+                            <Menu.Item key="createUser">
+                                <Icon type="plus-circle-o" />
+                                <span>Sign up</span>
                             </Menu.Item>
                         </Menu>
                     </Header>
