@@ -7,7 +7,8 @@ class ViewContent extends React.Component {
         super(props);
         this.state = {
             listItems: [],
-            showComment: true
+            showComment: true,
+            commentNum: 0
         };
     }
 
@@ -71,7 +72,7 @@ class ViewContent extends React.Component {
 
                         {
                             this.state[`showComment${item.title}`] ? (
-                                <CommentApp topicData={item}/>
+                                <CommentApp topicData={item} updateMethod={getCommentNum.bind(this, item)}/>
                             ) : (null)
                         }
 
@@ -91,7 +92,13 @@ function doLike() {
     alert("doLike");
 }
 
-// 组件内函数放在class里会好点
+function getCommentNum(item) {
+
+    this.setState({
+        [`commentNum${item.title}`]: this.state[`commentNum${item.title}`]++
+    });
+}
+
 function doComment(item) {
     this.setState({
         [`showComment${item.title}`]: !this.state[`showComment${item.title}`]

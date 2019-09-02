@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import {Comment, Avatar, Form, Button, List, Input, message} from 'antd';
-import moment from 'moment';
 
 const { TextArea } = Input;
 
@@ -63,15 +62,10 @@ class CommentApp extends React.Component {
                     submitting: false,
                     value: '',
                     comments: [
-                        {
-                            author: 'Han Solo',
-                            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                            content: <p>{this.state.value}</p>,
-                            datetime: moment().fromNow(),
-                        },
                         ...this.state.comments,
                     ],
                 });
+                this.props.updateMethod();
             } else {
                 message.error('comment failed');
             }
