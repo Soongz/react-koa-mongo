@@ -8,6 +8,14 @@ const item = new Schema({
     description: { type: String },
     content: { type: String, required: true },
     email: { type: String, required: true },
+    comment: [
+        {
+            author: { type: String, required: true },
+            content: { type: String, required: true },
+            create_time: { type: Date, default: new Date() }
+        }
+    ],
+
     creat_time: { type: Date, default: new Date() },
 });
 

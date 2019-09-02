@@ -17,7 +17,7 @@ class ContentFrame extends React.Component {
                 this.props.history.push(`/content/addTopic`);
                 break;
             case 'createUser':
-                this.props.history.push(`/content/createUser`);
+                this.props.history.push(`/register`);
                 break;
         }
     };

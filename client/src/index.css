@@ -11,7 +11,16 @@
 }
 
 .login-div {
-  align-content: center;
+  margin: 300px auto;
   width : 300px;
-  margin-top: 350px;
+
+}
+
+.wrapper {
+  width: 500px;
+
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 20px;
 }

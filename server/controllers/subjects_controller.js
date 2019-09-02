@@ -24,6 +24,33 @@ const subjectCtrl = {
         }
     },
 
+    async createComment(ctx) {
+        const reqBody = ctx.request.body;
+        const subject_id = reqBody.subject_id;
+
+        const subject = await findById(subject_id);
+        const commentArray = subject.comment;
+        commentArray.push(reqBody.newComment);
+        subject.comment = commentArray;
+        console.log(subject);
+        await createComment(subject);
+        ctx.status = 200;
+        ctx.body = {
+            succ: true,
+            data: subject
+        }
+    }
+
+};
+
+const createComment = (subject) => {
+    return new Promise((resolve, reject) => {
+        subject.save((err, result) => {
+            if (err) reject(err);
+
+            resolve(result);
+        })
+    });
 };
 
 const createOne = (body) => {
@@ -33,6 +60,15 @@ const createOne = (body) => {
             if (err) reject(err);
             resolve(info);
         });
+    });
+};
+
+const findById = subject_id => {
+    return new Promise((resolve, reject) => {
+        subjectItem.findById(subject_id, (err, result) => {
+            if (err) reject(err);
+            resolve(result);
+        })
     });
 };
 

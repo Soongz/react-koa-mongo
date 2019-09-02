@@ -10,6 +10,7 @@ const routers = router
   .get('/user/findRepo', userController.findRepo)
   .get('/subject/findAllSubjectItem', subjectController.findAllSubjectItem)
   .post('/subject/publishTopic', subjectController.publishTopic)
+  .post('/subject/createComment', subjectController.createComment)
   .post('/user/login', userController.login);
 
 module.exports = routers;

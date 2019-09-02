@@ -1,13 +1,13 @@
 import React from 'react';
 import {List, Avatar, Icon, Comment} from 'antd';
-import CommentArea from './comment';
+import CommentApp from './comment/CommentApp';
 class ViewContent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             listItems: [],
-            showComment: false
+            showComment: true
         };
     }
 
@@ -23,7 +23,6 @@ class ViewContent extends React.Component {
             console.log(err);
         })
     }
-
 
     render() {
         const listData = this.state.listItems;
@@ -59,7 +58,7 @@ class ViewContent extends React.Component {
                                 <IconText type="star-o" text="156" key="list-vertical-star-o"/>,
                                 <IconText action={doLike.bind(this)} type="like-o" text="156"
                                           key="list-vertical-like-o"/>,
-                                <IconText action={doComment.bind(this)} type="message" text="2"
+                                <IconText action={doComment.bind(this, item)} type="message" text={item.comment.length}
                                           key="list-vertical-message"/>,
                             ]}>
                             <List.Item.Meta
@@ -71,9 +70,9 @@ class ViewContent extends React.Component {
                         </List.Item>
 
                         {
-                            this.state.showComment ? (null) : (
-                                <CommentArea />
-                            )
+                            this.state[`showComment${item.title}`] ? (
+                                <CommentApp topicData={item}/>
+                            ) : (null)
                         }
 
                     </div>
@@ -91,11 +90,12 @@ function star() {
 function doLike() {
     alert("doLike");
 }
-function doComment() {
+
+// 组件内函数放在class里会好点
+function doComment(item) {
     this.setState({
-        showComment: !this.state.showComment
+        [`showComment${item.title}`]: !this.state[`showComment${item.title}`]
     });
-    console.log(this.state.showComment)
 }
 
 export default ViewContent;
