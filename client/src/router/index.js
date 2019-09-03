@@ -6,8 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-
-import Home from '../containers/home/home';
 import User from '../containers/home/user';
 import Register from '../containers/home/createUser';
 import Login from '../containers/home/login';
@@ -17,7 +15,7 @@ const AppRouter = () => (
   <Router>
     <div>
       <Switch>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Login}/>
         <Route path="/user" exact component={User}/>
         <Route path="/register" exact component={Register}/>
         <Route path="/login" exact component={Login}/>

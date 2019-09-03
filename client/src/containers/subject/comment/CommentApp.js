@@ -7,7 +7,6 @@ const { TextArea } = Input;
 const CommentList = ({ comments }) => (
     <List
         dataSource={comments}
-        header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
         itemLayout="horizontal"
         renderItem={props => <Comment {...props} />}
     />
@@ -37,7 +36,6 @@ class CommentApp extends React.Component {
         if (!this.state.value) {
             return;
         }
-
         this.setState({
             submitting: true,
         });
@@ -58,14 +56,18 @@ class CommentApp extends React.Component {
             })
         }).then(res => res.json()).then( data => {
             if (data.succ === true) {
+                this.props.updateMethod();
                 this.setState({
                     submitting: false,
                     value: '',
                     comments: [
+                        {
+                            author: 'Han Solo',
+                            content: <p>{this.state.value}</p>,
+                        },
                         ...this.state.comments,
                     ],
                 });
-                this.props.updateMethod();
             } else {
                 message.error('comment failed');
             }
