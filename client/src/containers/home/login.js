@@ -31,12 +31,16 @@ class Login extends React.Component {
                                      className="login-form"/>
 
                     <Button type="primary" className="login-form-button" onClick={doLogin.bind(this)}>Log in</Button>
-                    Or <a>register now!</a>
+                    Or <a onClick={goToSignUp.bind(this)}>register now!</a>
                 </div>
                 </Col>
             </Row>
         );
     }
+}
+
+function goToSignUp() {
+    this.props.history.push('/register');
 }
 
 function doLogin (){

@@ -35,6 +35,10 @@ const userCtrl = {
     async login(ctx) {
         const { loginname, password } = ctx.request.body;
         try {
+            //await need get a Promise
+            //可以让异步逻辑用同步写法实现
+            //async function replace callback
+            // findOne({ loginname }).then(resule=>{},err=>{});
             const findResult = await findOne({ loginname });
             if(findResult.length) {
                 if(findResult[0].password === password) {
